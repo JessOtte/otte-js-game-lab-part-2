@@ -39,8 +39,11 @@ function startGame() {
         console.log(`Grant's Health: ${grantHealthPoints}`);
 
         if (userHealthPoints <= 0) {
-            console.log(`\n \n Better Luck Next Time - The Almighty Grant Won!`);
-            document.getElementById("result").innerHTML = `Better Luck Next Time - The Almighty Grant Won!`;
+            console.log(`\n \n Better Luck Next Time - The Almighty Grant Won!
+            
+            Refresh the page to play again.`);
+            document.getElementById("result").innerHTML = `Better Luck Next Time - The Almighty Grant Won!
+            Refresh the page to play again.`;
             break;
 
         }   
@@ -49,13 +52,32 @@ function startGame() {
             wins++;
             console.log(`\n${username} is WINNER of round ${wins} of 3.`); 
             grantHealthPoints = 10;
+            
+
+            let nextRound = confirm("CONGRATS! Would you like to advance to the next round?");
+
+            if (nextRound === true && wins <= 2) {
+                console.log(`
+                GOOD LUCK IN THE NEXT ROUND!
+                `);
+
+            }
+            if (nextRound === false) {
+                console.log(`Quitters never prosper ¯\_(ツ)_/¯ `);
+                document.getElementById("result").innerHTML = `Quitters never prosper ¯\_(ツ)_/¯ `;
+                break;
+              }  
         }
 
-        if (wins === 3) {
+        if (wins > 2) {
             console.log(`
             >>>>>GAME OVER<<<<<
-            \n \nCongratulations ${username}! You've won!`);
-            document.getElementById("result").innerHTML = `Congratulations ${username}! You've won!`;
+            
+            Congratulations ${username}! You've won!
+
+            Refresh the page to play again.`);
+            document.getElementById("result").innerHTML = `Congratulations ${username}! You've won the game! \n \n
+            Refresh the page to play again.`;
             break;
 
         }
@@ -65,6 +87,10 @@ function startGame() {
         if (attack === false) {
           console.log(`BOOOO! Quitters never prosper 
           ¯\_(ツ)_/¯ `);
+
+          document.getElementById("result").innerHTML = `BOOOO! Quitters never prosper 
+          ¯\_(ツ)_/¯ `
+
           break;
         }
    
